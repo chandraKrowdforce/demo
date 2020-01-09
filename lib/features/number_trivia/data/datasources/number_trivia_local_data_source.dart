@@ -1,9 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:number_trivia/core/error/exception.dart';
-import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
+import 'package:meta/meta.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../../../core/error/exception.dart';
+import '../models/number_trivia_model.dart';
 
 abstract class NumberTriviaLocalDataSource {
   /// Gets the cached [NumberTriviaModel] which was gotten the last time

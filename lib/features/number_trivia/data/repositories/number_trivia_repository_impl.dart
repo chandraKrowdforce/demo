@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
-import 'package:number_trivia/core/error/exception.dart';
-import 'package:number_trivia/core/error/failures.dart';
-import 'package:number_trivia/core/network/network_info.dart';
-import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
-import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
-import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:number_trivia/features/number_trivia/domain/repositories/number_trivia_repositories.dart';
+import 'package:meta/meta.dart';
+
+import '../../../../core/error/exception.dart';
+import '../../../../core/error/failures.dart';
+import '../../../../core/network/network_info.dart';
+import '../../domain/entities/number_trivia.dart';
+import '../../domain/repositories/number_trivia_repositories.dart';
+import '../datasources/number_trivia_local_data_source.dart';
+import '../datasources/number_trivia_remote_data_source.dart';
 
 typedef Future<NumberTrivia> _ConcreteOrRandomChooser();
 

@@ -20,18 +20,24 @@ void main() {
   final tNumber = 1;
   final tNumberTrivia = NumberTrivia(number: 1, text: 'test');
 
-  test('should get trivia for the number from the repository', () async {
-    when(mockNumberTriviaRepositories.getConcreteNumberTrivia(any))
-        .thenAnswer((_) async => Right(tNumberTrivia));
 
-    final result = await useCase(Params(number: tNumber));
-    // UseCase should simply return whatever was returned from the Repository
-    expect(result, Right(tNumberTrivia));
 
-    // Verify that the method has been called on the Repository
-    verify(mockNumberTriviaRepositories.getConcreteNumberTrivia(tNumber));
+  group('description', (){
 
-    // Only the above method should be called and nothing more.
-    verifyNoMoreInteractions(mockNumberTriviaRepositories);
+  
+test(
+    'should get trivia for the number from the repository2',
+    () async {
+      // arrange
+      when(mockNumberTriviaRepositories.getConcreteNumberTrivia(any))
+          .thenAnswer((_) async => Right(tNumberTrivia));
+      // act
+      final result = await useCase(Params(number: tNumber));
+      // assert
+      expect(result, Right(tNumberTrivia));
+      verify(mockNumberTriviaRepositories.getConcreteNumberTrivia(tNumber));
+      verifyNoMoreInteractions(mockNumberTriviaRepositories);
+    },
+  );
   });
 }

@@ -20,14 +20,17 @@ void main() {
 
   final tNumberTrivia = NumberTrivia(number: 1, text: 'test');
 
+  
+  group('random', (){
+
+
   test(
-    'should get trivia from the repository',
+    'should get trivia from the repository2',
     () async {
       // arrange
       when(mockNumberTriviaRepository.getRandomNumberTrivia())
           .thenAnswer((_) async => Right(tNumberTrivia));
       // act
-      // Since random number doesn't require any parameters, we pass in NoParams.
       final result = await useCase(NoParams());
       // assert
       expect(result, Right(tNumberTrivia));
@@ -35,4 +38,5 @@ void main() {
       verifyNoMoreInteractions(mockNumberTriviaRepository);
     },
   );
+  });
 }
