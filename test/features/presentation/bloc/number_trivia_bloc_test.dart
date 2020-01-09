@@ -53,7 +53,7 @@ void main() {
         when(mockInputConverter.stringToUnsignedInteger(any))
             .thenReturn(Right(tNumberParsed));
     test(
-      'should call the InputConverter to validate and convert the string to an unsigned integer',
+      'should call the InputConverter to validate and convert the string to Number should emit [Error] when the input is invalidan unsigned integer',
       () async {
         // arrange
         setUpMockInputConverterSuccess();
@@ -77,7 +77,7 @@ void main() {
           Empty(),
           Error(message: INVALID_INPUT_FAILURE_MESSAGE),
         ];
-        expectLater(bloc, emitsInOrder(expected));
+        expectLater(bloc.state, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
@@ -110,7 +110,7 @@ void main() {
           Loading(),
           Loaded(trivia: tNumberTrivia),
         ];
-        expectLater(bloc, emitsInOrder(expected));
+        expectLater(bloc.state, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
@@ -129,7 +129,7 @@ void main() {
           Loading(),
           Error(message: SERVER_FAILURE_MESSAGE),
         ];
-        expectLater(bloc, emitsInOrder(expected));
+        expectLater(bloc.state, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
@@ -148,7 +148,7 @@ void main() {
           Loading(),
           Error(message: CACHE_FAILURE_MESSAGE),
         ];
-        expectLater(bloc, emitsInOrder(expected));
+        expectLater(bloc.state, emitsInOrder(expected));
         // act
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
@@ -184,7 +184,7 @@ void main() {
         Loading(),
         Loaded(trivia: tNumberTrivia),
       ];
-      expectLater(bloc, emitsInOrder(expected));
+      expectLater(bloc.state, emitsInOrder(expected));
       // act
       bloc.add(GetTriviaForRandomNumber());
     },
@@ -202,7 +202,7 @@ void main() {
         Loading(),
         Error(message: SERVER_FAILURE_MESSAGE),
       ];
-      expectLater(bloc, emitsInOrder(expected));
+      expectLater(bloc.state, emitsInOrder(expected));
       // act
       bloc.add(GetTriviaForRandomNumber());
     },
@@ -220,7 +220,7 @@ void main() {
         Loading(),
         Error(message: CACHE_FAILURE_MESSAGE),
       ];
-      expectLater(bloc, emitsInOrder(expected));
+      expectLater(bloc.state, emitsInOrder(expected));
       // act
       bloc.add(GetTriviaForRandomNumber());
     },
